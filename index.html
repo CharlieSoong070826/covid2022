@@ -8,20 +8,26 @@
   <body>
     <h1>Charlie Soong's homepage</h1>
     <p class="mypara">This is my first webpage.</p>
-    <img src="cheese.png" alt="cheese" width="300px">
+    <img id="myimg" src="cheese.png" alt="cheese" width="300px">
     <br>
-     <a class="mylist2" href="https://www.youtube.com/watch?v=BBJa32lCaaY">You should click this link :)</a>
-    <ol>
-        <li class="mylist1">hi</li>
+    <a class="mylist2" href="https://www.youtube.com/watch?v=BBJa32lCaaY">You should click this link :)</a>
+    <ol class="mylist1">
+        <li><a href="#" onclick="setimg('cheese.png')">hi<a/></li>
         <br>
-        <li class="mylist1">hi</li>
+        <li><a href="#" onclick="setimg('spongebob-how.gif')">how<a/></li>
         <br>
-        <li class="mylist1">hi</li>
+        <li>is</li>
         <br>
-        <li class="mylist1">hi</li>
+        <li><a href="#" onclick="setimg('Nirvana_smile.png')">your<a/></li>
         <br>
-        <li class="mylist1">hi</li>
+        <li><a href="#" onclick="setimg('clapping-wow.gif')">day<a/></li>
         <br>
     </ol>
   </body>
+  <script type="text/javascript">
+  function setimg(imgname) {
+  document.getElementById('myimg').src = imgname;
+}
+  </script>
+
 </html>
