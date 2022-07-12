@@ -1,8 +1,15 @@
 .nav-wrapper{
-background:  #b2ebf2;
+background:  #424242;
 }
 
 .brand-logo{
 margin-left: 25px;
 font-family: monospace;
+}
+
+#map { height: 300px; }
+
+.row{
+  font-family: monospace;
+margin-top: 30px;
 }
