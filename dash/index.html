@@ -16,6 +16,7 @@
 <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
   crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </head>
   <body>
     <nav>
@@ -42,9 +43,8 @@
      <div class="col s12 m6">
        <div class="card black">
          <div class="card-content">
-           <span class="card-title">Simple greeting</span>
-           <p>Yo hi viewers, below you'll see my data and next to this card you would see my card, now i get it it looks incredibly scuffed and probably doesn't have enough detail. But do we really seek all those things? Why don't you live with what your satisfied with and what you yourself believe is what you truly want and reach for. No one is forcing you but rather is society and your self-conscience which is making you think of this. just live life like it is and if you really need to reach for something then thats the part where you would really need motivation for your own survival, many do say simple is best I myself stick with that saying nothing extra or unique just a plain old website that anyone would think "what a simple and plain website!" and yet i still don't know how to change the font and color of the words on the map TvT.
-           -Charlie Soong</p>
+           <span class="card-title">Chart (rip my entire paragraph of an introduction)</span>
+            <canvas id="bar-chart" width="800" height="450"></canvas>
          </div>
        </div>
      </div>
@@ -67,6 +67,11 @@
 < <script type="text/javascript">
     pushdata();
     function pushdata() {
+
+      objs = coviddata.data;
+      objs.sort((a,b) => b.dead - a.dead);
+
+
       myhtml = "<ul class='collection'>"; // building a string to push to p tag
       for (i=0;i<50;i++) {
         myending = coviddata.data[i].country_code.slice(0,1) + "/" + coviddata.data[i].country_code + ".gif";
@@ -104,6 +109,41 @@ function algo(map) {
             radius: rad
         }).bindPopup(pop).addTo(map);
       }
+    }
+
+    bar();
+    function bar() {
+
+      objs = coviddata.data;
+      objs.sort((a,b) => b.dead - a.dead);
+
+        mylabs = [];
+        mydata = [];
+        for (i=0;i<5;i++) {
+          mylabs.push(coviddata.data[i].location);
+          mydata.push(coviddata.data[i].dead)
+        }
+
+        new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+          labels:  mylabs,
+          datasets: [
+            {
+              label: "Population (millions)",
+              backgroundColor: ["#fdd835", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+              data: mydata
+            }
+          ]
+        },
+        options: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Covid Deaths 2021'
+          }
+        }
+    });
     }
 
 
