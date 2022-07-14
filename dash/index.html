@@ -20,7 +20,7 @@
   <body>
     <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo"><i class="material-icons">all_inclusive</i></a>
+      <a href="#" class="brand-logo"><i class="material-icons">all_inclusive</i>Covid Data!</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="sass.html">Sass</a></li>
         <li><a href="badges.html">Components</a></li>
@@ -32,7 +32,7 @@
   <div class="row">
 
      <div class="col s12 m6">
-       <div class="card white">
+       <div class="card black">
          <div class="card-content ">
            <span class="card-title">Map</span>
            <div id="map"></div>
@@ -40,10 +40,11 @@
        </div>
      </div>
      <div class="col s12 m6">
-       <div class="card white">
+       <div class="card black">
          <div class="card-content">
-           <span class="card-title">Card Title</span>
-           <p>An efficient display of increase and decrease on something</p>
+           <span class="card-title">Simple greeting</span>
+           <p>Yo hi viewers, below you'll see my data and next to this card you would see my card, now i get it it looks incredibly scuffed and probably doesn't have enough detail. But do we really seek all those things? Why don't you live with what your satisfied with and what you yourself believe is what you truly want and reach for. No one is forcing you but rather is society and your self-conscience which is making you think of this. just live life like it is and if you really need to reach for something then thats the part where you would really need motivation for your own survival, many do say simple is best I myself stick with that saying nothing extra or unique just a plain old website that anyone would think "what a simple and plain website!".
+           -Charlie Soong</p>
          </div>
        </div>
      </div>
@@ -52,7 +53,7 @@
 
     <div class="row">
   <div class="col s12">
-    <div class="card white">
+    <div class="card black">
       <div class="card-content">
         <span class="card-title">Data</span>
         <p id="mydata"></p>
@@ -63,18 +64,18 @@
 
 </body>
 
-<script type="text/javascript">
- pushdata();
-  function pushdata(){
-    myhtml = "<ul class='collection'>";
-    for (i=0;i<5;i++) {
-      myending = coviddata.data[i].country_code.slice(0,1) + "/" + coviddata.data[1].country_code + "gif"
-      myurl = "https://www.crwflags.com/fotw/images/" + myending;
-      myhtml = myhtml + "<li class='collection-item avatar'><img src='" + myurl + "'width='40px' class='circle'>" + coviddata.data[i].location + "<p>" + coviddata.data[0].dead + "</p></li>";
+< <script type="text/javascript">
+    pushdata();
+    function pushdata() {
+      myhtml = "<ul class='collection'>"; // building a string to push to p tag
+      for (i=0;i<50;i++) {
+        myending = coviddata.data[i].country_code.slice(0,1) + "/" + coviddata.data[i].country_code + ".gif";
+        myurl = "https://www.crwflags.com/fotw/images/" + myending;
+        myhtml = myhtml + "<li class='collection-item avatar'><img src='" + myurl + "' width='40px' class='circle'> " + coviddata.data[i].location + "<p>" + coviddata.data[i].dead + "</p></li>";
+      }
+      myhtml = myhtml + "</ul>"
+      document.getElementById('mydata').innerHTML = myhtml;
     }
-    myhtml = myhtml + "</ul>"
-    document.getElementById('mydata').innerHTML = myhtml;
-  }
 
 mapping();
 function mapping(){
@@ -94,16 +95,16 @@ function algo(map) {
     lon = coviddata.data[i].longitude;
     rad = coviddata.data[i].dead * 2;
 
-    pop = "<h5>Details</h5>"coviddata.data[i].location + "<br>" + coviddata.data[i].dead
+    pop = "<h5>Detail</h5>" + coviddata.data[i].location + "<br>" + coviddata.data[i].dead;
 
     var circle = L.circle([lat, lon], {
-      color: 'red',
-      fillColor: '#f03',
-      fillOpacity: 0.5,
-      radius: rad
-}).bindPopup(pop).addTo(map);
-  }
-}
+            color: 'blue',
+            fillColor: '#40c4ff',
+            fillOpacity: 0.5,
+            radius: rad
+        }).bindPopup(pop).addTo(map);
+      }
+    }
 
 
   </script>
